@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-main-Deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      component: server-main
+  template:
+    metadata:
+      labels:
+        component: server-main
+    spec: 
+      containers:
+        - name: moods-server
+          image: prashantdey/completeprojectb14:servermainv1.0
+          ports:
+            - containerPort: 5001
+      resources:
+        requests:
+          cpu:
+          memory:
+        limit:
+          cpu:
+          memory:

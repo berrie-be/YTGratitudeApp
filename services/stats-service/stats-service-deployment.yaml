@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stats-service-deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      component: stats-service
+  template:
+    metadata:
+      labels:
+        component: stats-service
+    spec: 
+      containers:
+        - name: stats-service
+          image: prashantdey/completeprojectb14:statsservicev1.0
+          ports:
+            - containerPort: 50053
+      resources:
+        requests:
+          cpu:
+          memory:
+        limit:
+          cpu:
+          memory:

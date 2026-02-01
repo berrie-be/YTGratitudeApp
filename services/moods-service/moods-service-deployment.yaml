@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moods-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: moods-service
+  template:
+    metadata:
+      labels:
+        component: moods-service
+    spec:
+      containers:
+        - name: moods-service
+          image: prashantdey/completeprojectb14:moodsservicev1.0
+          ports:
+            - containerPort: 50052
+      resources:
+        requests:
+          cpu:
+          memory:
+        limit:
+          cpu:
+          memory:
