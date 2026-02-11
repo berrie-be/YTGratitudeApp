@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: moods-service-service
 spec:
-  type: CLusterIP 
+  type: ClusterIP 
   selector:
     component: moods-service
   ports: 

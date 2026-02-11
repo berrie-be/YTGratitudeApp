@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: database-deployment
+  name: postgres-deployment
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,10 @@ spec:
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
-            claimName: database-persistent-vlc
+            claimName: database-persistent-volume-claim
+        - name: postgres-init
+          configMap:
+            name: postgres-init-sql
       containers:
         - name: postgres
           image: postgres:18 #need to check the image
@@ -24,6 +27,8 @@ spec:
           volumeMounts:
             - name:  postgres-storage
               mountPath: /var/lib/postgresql
+            - name: postgres-init
+              mountPath: /docker-entrypoint-initdb.d
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:

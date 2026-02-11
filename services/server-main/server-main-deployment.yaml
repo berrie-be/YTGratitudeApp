@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server-main-Deployment
+  name: server-main-deployment
 spec: 
   replicas: 1
   selector:
@@ -14,13 +14,20 @@ spec:
     spec: 
       containers:
         - name: moods-server
-          image: prashantdey/completeprojectb14:servermainv1.0
+          image: kaveri21/gratitudeapp:server-mainv1.1
           ports:
             - containerPort: 5001
-      resources:
-        requests:
-          cpu:
-          memory:
-        limit:
-          cpu:
-          memory:
+          env:
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST
+              value: postgres-cluster-ip-service
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: postgres
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD

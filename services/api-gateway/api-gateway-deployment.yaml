@@ -14,20 +14,20 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: prashantdey/completeprojectb14:apigatewayv1.0
+          image: kaveri21/gratitudeapp:api-gatewayv1.1
           ports:
             - containerPort: 5000
-      env:
-        - name: ENTRIES_ADDR
-          value: "entries-cluster-ip-service:50051"
-        - name: OPENAI_API_KEY
-          value: "key"
-        - name: OPENAI_MODEL
-          value: "gpt-4o-mini"
-      resources:
-        requests:
-          cpu: "200m"
-          memory: "256Mi"
-        limits:
-          cpu: "500m"
-          memory: "512Mi"
+          env:
+            - name: ENTRIES_ADDR
+              value: "entries-cluster-ip-service:50051"
+            - name: OPENAI_API_KEY
+              value: "key"
+            - name: OPENAI_MODEL
+              value: "gpt-4o-mini"
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

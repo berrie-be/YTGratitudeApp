@@ -14,13 +14,20 @@ spec:
     spec:
       containers:
         - name: moods-service
-          image: prashantdey/completeprojectb14:moodsservicev1.0
+          image: kaveri21/gratitudeapp:moods-servicev1.1
           ports:
             - containerPort: 50052
-      resources:
-        requests:
-          cpu:
-          memory:
-        limit:
-          cpu:
-          memory:
+          env:
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST
+              value: postgres-cluster-ip-service
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: postgres
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD

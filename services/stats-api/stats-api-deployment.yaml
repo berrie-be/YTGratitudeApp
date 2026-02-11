@@ -14,16 +14,9 @@ spec:
     spec:
       containers:
         - name: stats-api
-          image: prashantdey/completeprojectb14:statsapiv1.0
+          image: kaveri21/gratitudeapp:stats-apiv1.1
           ports:
             - containerPort: 5003
-      env:
-        - name: STATS_SERVICE_ADDR
-          value: "stats-service-cluster-ip-service:50053"
-      resources:
-        requests:
-          cpu:
-          memory:
-        limit:
-          cpu:
-          memory:
+          env:
+            - name: STATS_SERVICE_ADDR
+              value: "stats-service-cluster-ip-service:50053"

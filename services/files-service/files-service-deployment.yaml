@@ -14,25 +14,18 @@ spec:
     spec:
       containers:
         - name: files-service
-          image: prashantdey/completeprojectb14:filesservicev1.0
+          image: kaveri21/gratitudeapp:files-servicev1.1
           ports:
             - containerPort: 5004
-      env:
-        - name: PORT
-          value: "5004"
-        - name: REGION
-          value: "us-east-1"
-        - name: MAX_MB
-          value: 10
-        - name: BUCKET
-          value: ""
-        - name: PREFIX
-          value: ""
-      resources:
-        requests:
-          cpu:
-          memory:
-        limit:
-          cpu:
-          memory:
-          
+          env:
+            - name: PORT
+              value: "5004"
+            - name: REGION
+              value: "us-east-1"
+            - name: MAX_MB
+              value: "10"
+            - name: BUCKET
+              value: "kaver-eks-purpose"
+            - name: PREFIX
+              value: "gratitude-uploads"
+              

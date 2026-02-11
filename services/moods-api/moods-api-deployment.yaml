@@ -14,16 +14,9 @@ spec:
     spec: 
       containers:
         - name: moods-api
-          image: prashantdey/completeprojectb14:moodsapiv1.0
+          image: kaveri21/gratitudeapp:moods-apiv1.1
           ports:
             - containerPort: 5002
-      env:
-        - name: MOODS_SERVICE_ADDR
-          value: "moods-service-cluster-ip-service:50052"
-      resources:
-        requests:
-          cpu:
-          memory:
-        limit:
-          cpu:
-          memory:
+          env:
+            - name: MOODS_SERVICE_ADDR
+              value: "moods-service-cluster-ip-service:50052"
